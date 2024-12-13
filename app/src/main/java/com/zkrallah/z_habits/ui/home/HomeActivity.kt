@@ -41,7 +41,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this@HomeActivity, HistoryActivity::class.java))
         }
 
-        binding.modeCard.setOnClickListener {
+        binding.moodCard.setOnClickListener {
             startActivity(Intent(this@HomeActivity, MoodActivity::class.java))
         }
 

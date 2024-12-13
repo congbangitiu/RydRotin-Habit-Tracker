@@ -12,7 +12,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginBottom="12dp"
         android:paddingEnd="8dp"
-        android:hint="leave a message..."
+        android:hint="Leave messages here ..."
         android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

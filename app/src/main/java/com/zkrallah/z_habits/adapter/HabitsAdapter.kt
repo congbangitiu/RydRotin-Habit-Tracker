@@ -40,8 +40,9 @@ class HabitsAdapter(private val list: MutableList<Habits>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.habitName.text = list[position].name
-        holder.habitCount.text = "Habit count per day : ${list[position].countPerDay}"
+        holder.habitCount.text = "Habit count per day: ${list[position].countPerDay} ${if (list[position].countPerDay == 1) "time" else "times"}"
     }
+
 
     override fun getItemCount(): Int {
         return list.size

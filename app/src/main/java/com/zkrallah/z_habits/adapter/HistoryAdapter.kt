@@ -35,9 +35,10 @@ class HistoryAdapter(private val list: MutableList<History>) : RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.habitName.text = list[position].habitName
         holder.date.text = list[position].date
-        holder.habitCount.text = "${list[position].countDone} from ${list[position].countPerDay}"
+        holder.habitCount.text = "${list[position].countDone} out of ${list[position].countPerDay}"
         holder.message.text = list[position].message
     }
+
 
     override fun getItemCount(): Int {
         return list.size

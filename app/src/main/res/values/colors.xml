@@ -18,6 +18,7 @@
     <color name="variant">#FC2947</color>
     <color name="orange">#fce340</color>
     <color name="light_red">#e48a80</color>
+    <color name="dark_red">#ff0000</color>
     <color name="background">#FFF</color>
     <color name="titles">#000</color>
 
