@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -33,6 +34,23 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
+        binding.historyContainer.visibility = View.GONE
+
+        binding.analyzeBtn.setOnClickListener {
+            binding.historyContainer.visibility = View.VISIBLE
+
+            val prevWeeks = getPreviousWeek()
+            val prevWeeksInDays = getPreviousWeekNames()
+            updateWeeksGraph(prevWeeks, prevWeeksInDays)
+
+            val prevMonths = getPreviousMonth()
+            val prevMonthsInDays = getPreviousMonthNames()
+            updateMonthsGraph(prevMonths, prevMonthsInDays)
+
+            updateMoodGraph(prevMonths, prevMonthsInDays)
+            updateAllTimeHistoryGraph()
+        }
+
         binding.habitsCard.setOnClickListener {
             startActivity(Intent(this@HomeActivity, HabitsActivity::class.java))
         }
@@ -58,17 +76,6 @@ class HomeActivity : AppCompatActivity() {
         binding.moodCalendarBtn.setOnClickListener {
             Toast.makeText(this@HomeActivity, "Choose the starting day", Toast.LENGTH_SHORT).show()
             showSelectMoodMonthDialog()
-        }
-
-        binding.analyzeBtn.setOnClickListener {
-            val prevWeeks = getPreviousWeek()
-            val prevWeeksInDays = getPreviousWeekNames()
-            updateWeeksGraph(prevWeeks, prevWeeksInDays)
-            val prevMonths = getPreviousMonth()
-            val prevMonthsInDays = getPreviousMonthNames()
-            updateMonthsGraph(prevMonths, prevMonthsInDays)
-            updateMoodGraph(prevMonths, prevMonthsInDays)
-            updateAllTimeHistoryGraph()
         }
     }
 
