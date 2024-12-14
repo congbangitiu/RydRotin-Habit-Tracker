@@ -50,7 +50,7 @@ class MoodActivity : AppCompatActivity() {
                             var mood = viewModel.mood.value
                             if (mood != null) {
                                 mood.value = selected
-                                mood.message = binding.edtMessage.text.toString()
+                                mood.message = binding.editMessage.text.toString()
                                 viewModel.updateMood(mood)
                                 adapter.editItem(mood)
                                 Snackbar.make(
@@ -60,7 +60,7 @@ class MoodActivity : AppCompatActivity() {
                                 ).show()
                             } else {
                                 mood = Mood(
-                                    selected, binding.edtMessage.text.toString(), date
+                                    selected, binding.editMessage.text.toString(), date
                                 )
                                 viewModel.insertMood(mood)
                                 adapter.addItem(mood)
