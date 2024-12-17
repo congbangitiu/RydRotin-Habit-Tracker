@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.zkrallah.z_habits.R
 import com.zkrallah.z_habits.databinding.ActivityHomeBinding
 import com.zkrallah.z_habits.ui.habits.HabitsActivity
 import com.zkrallah.z_habits.ui.history.HistoryActivity

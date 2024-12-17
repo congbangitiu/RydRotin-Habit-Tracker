@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.zkrallah.z_habits"
         minSdk 25
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "5.0"
 
@@ -75,5 +75,8 @@ dependencies {
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    // Material Design
+    implementation 'com.google.android.material:material:1.10.0'
 
 }

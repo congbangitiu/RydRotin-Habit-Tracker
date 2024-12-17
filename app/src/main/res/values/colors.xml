@@ -6,11 +6,15 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="brown">#704214</color>
 
 
     <!--COLOR PALETTE :-->
     <color name="dark_green">#0A4D68</color>
+    <color name="dark_yellow">#E6C619</color>
+    <color name="light_yellow">#FAFAD2</color>
+    <color name="medium_yellow">#FFBF00</color>
     <color name="dark_black">#000000</color>
     <color name="mint_green">#088395</color>
     <color name="teal_dark">#05BFDB</color>

@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
-        android:theme="@style/Theme.ZHabits"
+        android:theme="@style/Theme.RydRotin"
         tools:targetApi="31">
         <activity
             android:name=".ui.mood.MoodActivity"
@@ -32,7 +32,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.ZHabits.NoActionBar">
+            android:theme="@style/Theme.RydRotin.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
