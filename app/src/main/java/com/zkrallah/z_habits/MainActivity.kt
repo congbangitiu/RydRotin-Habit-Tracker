@@ -6,7 +6,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.zkrallah.z_habits.databinding.ActivityMainBinding
-import com.zkrallah.z_habits.ui.home.HomeActivity
+
+import com.zkrallah.z_habits.ui.login.Login
 
 class MainActivity : AppCompatActivity() {
 
