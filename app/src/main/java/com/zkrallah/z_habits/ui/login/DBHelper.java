@@ -34,7 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public String checkUsername(String in_email) {
+    public String getUsername(String in_email) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         String username = null;
         Cursor cursor = MyDB.rawQuery("SELECT username FROM users WHERE email = ?", new String[]{in_email});
@@ -43,6 +43,15 @@ public class DBHelper extends SQLiteOpenHelper {
             username = cursor.getString(0); // 0 is the index of the username column
         }
         return username;
+    }
+
+    public Boolean checkEmail(String email) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from users where email = ?", new String[]{email});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
     }
 
     public Boolean checkEmail(String email) {
