@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
                 String user = email.getText().toString();
                 String pass = password.getText().toString();
 
-            if(user.equals("")||pass.equals(""))
+                if(user.equals("")||pass.equals(""))
                     Toast.makeText(Login.this, "Please enter all the fields!!", Toast.LENGTH_SHORT).show();
                 else if(!Patterns.EMAIL_ADDRESS.matcher(user).matches()) {
                     Toast.makeText(Login.this, "Please enter valid Email!!", Toast.LENGTH_SHORT).show();
@@ -57,6 +57,7 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Sign in successfull!!", Toast.LENGTH_SHORT).show();
                         Intent intent  = new Intent(getApplicationContext(), HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        intent.putExtra("name", userName.getName());
                         startActivity(intent);
                     }else{
                         Toast.makeText(Login.this, "Email or Password are Wrong!!", Toast.LENGTH_SHORT).show();
