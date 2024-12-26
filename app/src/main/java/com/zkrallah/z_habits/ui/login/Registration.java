@@ -54,9 +54,10 @@ public class Registration extends AppCompatActivity {
                 else {
                     if (pass.equals(repass)) {
                         Boolean userCheck = DB.checkEmail(user);
-                        if (userCheck == false) {
+                        Boolean nameCheck = DB.checkUsername(name);
+                        if (!userCheck && !nameCheck) {
                             Boolean insert = DB.insertData(user,name,pass);
-                            if (insert == true) {
+                            if (insert) {
                                 Toast.makeText(Registration.this, "Registered successfully!!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                 userName.setName(name);
@@ -65,8 +66,12 @@ public class Registration extends AppCompatActivity {
                             } else {
                                 Toast.makeText(Registration.this, "Registration failed!!", Toast.LENGTH_SHORT).show();
                             }
-                        } else {
+                        } else if (userCheck && !nameCheck) {
                             Toast.makeText(Registration.this, "Email already exists!!", Toast.LENGTH_SHORT).show();
+                        } else if (!userCheck) {
+                            Toast.makeText(Registration.this, "Username already exists!!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Registration.this, "Both Username and Email already exists!!", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(Registration.this, "Passwords not matching!!", Toast.LENGTH_SHORT).show();
