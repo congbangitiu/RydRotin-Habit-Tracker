@@ -6,6 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "history_table")
 data class History(
+    @ColumnInfo(defaultValue = "user")
+    var username: String,
     var habitId: Long,
     var habitName: String,
     var countDone: Int,

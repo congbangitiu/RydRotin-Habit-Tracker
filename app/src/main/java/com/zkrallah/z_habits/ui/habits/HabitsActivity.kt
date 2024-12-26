@@ -1,9 +1,11 @@
 package com.zkrallah.z_habits.ui.habits
 
+//import androidx.compose.ui.semantics.text
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -14,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.zkrallah.z_habits.HabitsApp
 import com.zkrallah.z_habits.R
 import com.zkrallah.z_habits.adapter.HabitsAdapter
 import com.zkrallah.z_habits.adapter.HistoryAdapter
@@ -21,7 +24,8 @@ import com.zkrallah.z_habits.databinding.ActivityHabitsBinding
 import com.zkrallah.z_habits.local.entities.Habits
 import com.zkrallah.z_habits.local.entities.History
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 class HabitsActivity : AppCompatActivity() {
 
@@ -34,22 +38,26 @@ class HabitsActivity : AppCompatActivity() {
     private lateinit var adapter: HabitsAdapter
     private var alertCounter = 0
 
+    var userName: HabitsApp? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHabitsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[HabitsViewModel::class.java]
+        userName = (applicationContext as HabitsApp)
         updateUI()
 
         binding.addFab.setOnClickListener {
             buildAddHabitAlertDialog()
             dialog.show()
         }
+
     }
 
     private fun updateUI() {
-        viewModel.getHistory()
+        viewModel.getHistory(userName!!.getData().toString())
         viewModel.habits.observe(this) {
             it?.let { habits ->
 
@@ -66,7 +74,7 @@ class HabitsActivity : AppCompatActivity() {
                     }
 
                     override fun onAddCountClicked(habits: Habits) {
-                        viewModel.checkTodayHistory(habits.habitId, date)
+                        viewModel.checkTodayHistory(habits.habitId, date, userName!!.getData().toString())
 
                         viewModel.state.observe(this@HabitsActivity, object : Observer<Boolean>{
                             override fun onChanged(value: Boolean) {
@@ -105,7 +113,7 @@ class HabitsActivity : AppCompatActivity() {
                     }
 
                     override fun onMessageClicked(habits: Habits) {
-                        viewModel.checkTodayHistory(habits.habitId, date)
+                        viewModel.checkTodayHistory(habits.habitId, date, userName!!.getData().toString())
 
                         viewModel.state.observe(this@HabitsActivity, object : Observer<Boolean>{
                             override fun onChanged(value: Boolean) {
@@ -140,7 +148,12 @@ class HabitsActivity : AppCompatActivity() {
         val edtMessage = dialogView.findViewById<EditText>(R.id.edt_msg)
 
         val builder = AlertDialog.Builder(this@HabitsActivity, R.style.MyDialogTheme)
-        builder.setTitle("Leave a message...")
+
+        val customTitleView = inflater.inflate(R.layout.custom_title, null)
+
+        builder.setCustomTitle(customTitleView)
+
+        //builder.setTitle("Message")
         builder.setCancelable(true)
         builder.setView(dialogView)
 
@@ -166,7 +179,7 @@ class HabitsActivity : AppCompatActivity() {
         builder.setCancelable(true)
         builder.setMessage("Click DELETE if you want to delete this Habit.")
         builder.setPositiveButton("DELETE"){_, _ ->
-            viewModel.deleteHabit(habits.habitId)
+            viewModel.deleteHabit(habits.habitId, userName!!.getData().toString())
             adapter.removeItem(position)
             dialog.dismiss()
         }
@@ -181,7 +194,12 @@ class HabitsActivity : AppCompatActivity() {
         val edtCount = dialogView.findViewById<EditText>(R.id.edt_habit_count)
 
         val builder = AlertDialog.Builder(this@HabitsActivity, R.style.MyDialogTheme)
-        builder.setTitle("Edit Habit Count")
+
+        val customTitleView = inflater.inflate(R.layout.custom_title, null)
+        builder.setCustomTitle(customTitleView)
+        val titleTextView = customTitleView.findViewById<TextView>(R.id.customTitle)
+        titleTextView.text = "Edit Habit Count"
+//        builder.setTitle("Edit Habit Count")
         builder.setCancelable(true)
         builder.setView(dialogView)
         builder.setMessage("NOTE THAT TODAY'S HISTORY OF THIS HABIT IS GOING TO BE DELETED !")
@@ -191,12 +209,12 @@ class HabitsActivity : AppCompatActivity() {
                 adapter.editItem(habits, position)
                 viewModel.editHabit(habits)
 
-                viewModel.checkTodayHistory(habits.habitId, date)
+                viewModel.checkTodayHistory(habits.habitId, date, userName!!.getData().toString())
                 viewModel.state.observe(this@HabitsActivity, object : Observer<Boolean>{
                     override fun onChanged(value: Boolean) {
                         if (value){
                             val history: History? = viewModel.history.value
-                            if (history != null) viewModel.deleteHistory(history.historyId)
+                            if (history != null) viewModel.deleteHistory(history.historyId, userName!!.getData().toString())
                             viewModel.state.removeObserver(this)
                             viewModel.clearTodayHistory()
                             viewModel.state.value = false
@@ -218,11 +236,13 @@ class HabitsActivity : AppCompatActivity() {
         builder.setMessage("Click start if you want to add a new history to this habit.")
         builder.setPositiveButton("START"){_, _ ->
             val history = History(
+                userName!!.getData().toString(),
                 habits.habitId,
                 habits.name,
                 0,
                 habits.countPerDay,
-                date
+                date,
+                ""
             )
             viewModel.insertHistory(history)
             alertCounter--
@@ -243,15 +263,20 @@ class HabitsActivity : AppCompatActivity() {
         val edtCount = dialogView.findViewById<EditText>(R.id.edt_habit_count)
 
         val builder = AlertDialog.Builder(this@HabitsActivity, R.style.MyDialogTheme)
+
+        val customTitleView = inflater.inflate(R.layout.custom_title, null)
+        builder.setCustomTitle(customTitleView)
+        val titleTextView = customTitleView.findViewById<TextView>(R.id.customTitle)
+        titleTextView.text = "ADD A HABIT"
+
         builder.setView(dialogView)
         builder.setCancelable(true)
-        builder.setTitle("ADD A HABIT")
-        builder.setMessage(
-            "Fill in the data :"
-        )
+//        builder.setTitle("ADD A HABIT")
+
         builder.setPositiveButton("ADD") { _, _ ->
             if (edtName.text.isNotEmpty() && edtCount.text.isNotEmpty()) {
                 val habit = Habits(
+                    userName!!.getData().toString(),
                     edtName.text.toString(),
                     edtCount.text.toString().toInt()
                 )
@@ -278,7 +303,12 @@ class HabitsActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this@HabitsActivity, R.style.MyDialogTheme)
 
         builder.setCancelable(true)
-        builder.setTitle("HABIT HISTORY")
+
+        val customTitleView = inflater.inflate(R.layout.custom_title, null)
+        builder.setCustomTitle(customTitleView)
+        val titleTextView = customTitleView.findViewById<TextView>(R.id.customTitle)
+        titleTextView.text = "HABIT HISTORY"
+
         val recycler = dialogView.findViewById<RecyclerView>(R.id.recycler_habit_history)
         val streakTxt = dialogView.findViewById<TextView>(R.id.streak)
         val layoutManager =
@@ -286,14 +316,14 @@ class HabitsActivity : AppCompatActivity() {
         layoutManager.stackFromEnd = true
         layoutManager.reverseLayout = true
         recycler.layoutManager = layoutManager
-        viewModel.getHabitHistory(habits.habitId)
+        viewModel.getHabitHistory(habits.habitId, userName!!.getData().toString())
         viewModel.habitHistory.observe(this@HabitsActivity) {
             it?.let {
                 streakTxt.text = "Current Streak : ${calculateCurrentStreak(it.history)}"
                 val historyAdapter = HistoryAdapter(it.history as MutableList<History>)
                 historyAdapter.setItemClickListener(object : HistoryAdapter.OnItemClickListener{
                     override fun onDeleteClicked(history: History, position: Int) {
-                        viewModel.deleteHistory(history.historyId)
+                        viewModel.deleteHistory(history.historyId, userName!!.getData().toString())
                         historyAdapter.removeItem(position)
                     }
 

@@ -33,17 +33,17 @@ class MoodViewModel : ViewModel() {
         }
     }
 
-    fun checkTodayMood(date: String) {
+    fun checkTodayMood(date: String, username: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val job = async { database.moodDAO().getTodayMood(date) }
+            val job = async { database.moodDAO().getTodayMood(date, username) }
             _mood.postValue(job.await())
             _state.postValue(true)
         }
     }
 
-    fun getMoodHistory(){
+    fun getMoodHistory(username: String){
         viewModelScope.launch (Dispatchers.IO){
-            _moodHistory.postValue(database.moodDAO().getMoodHistory())
+            _moodHistory.postValue(database.moodDAO().getMoodHistory(username))
         }
     }
 

@@ -18,13 +18,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.zkrallah.z_habits.HabitsApp
 import com.zkrallah.z_habits.R
 import com.zkrallah.z_habits.adapter.HistoryAdapter
 import com.zkrallah.z_habits.databinding.ActivityHistoryBinding
 import com.zkrallah.z_habits.local.entities.History
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 class HistoryActivity : AppCompatActivity() {
 
@@ -32,6 +34,7 @@ class HistoryActivity : AppCompatActivity() {
     private lateinit var viewModel: HistoryViewModel
     private lateinit var dialog: AlertDialog
     private val calendar: Calendar = Calendar.getInstance()
+    var userName: HabitsApp? = null
     private val map = mapOf(
         1 to "Very Bad",
         2 to "Bad",
@@ -54,12 +57,13 @@ class HistoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
+        userName = (applicationContext as HabitsApp)
 
         updateUI()
     }
 
     private fun updateUI() {
-        viewModel.getHistory()
+        viewModel.getHistory(userName!!.getData().toString())
         viewModel.history.observe(this) {
             it?.let {
                 val adapter = HistoryAdapter(it as MutableList<History>)
@@ -72,7 +76,7 @@ class HistoryActivity : AppCompatActivity() {
 
                 adapter.setItemClickListener(object : HistoryAdapter.OnItemClickListener {
                     override fun onDeleteClicked(history: History, position: Int) {
-                        viewModel.deleteHistory(history.historyId)
+                        viewModel.deleteHistory(history.historyId, userName!!.getData().toString())
                         adapter.removeItem(position)
                     }
 
@@ -82,7 +86,7 @@ class HistoryActivity : AppCompatActivity() {
     }
 
     private fun buildDetailsDialog(date: String) {
-        viewModel.getTodayDetails(date)
+        viewModel.getTodayDetails(date, userName!!.getData().toString())
         viewModel.state.observe(this@HistoryActivity, object : Observer<Boolean> {
             @SuppressLint("SetTextI18n")
             override fun onChanged(value: Boolean) {
@@ -130,7 +134,7 @@ class HistoryActivity : AppCompatActivity() {
                     val adapter = HistoryAdapter(historyResponse as MutableList<History>)
                     adapter.setItemClickListener(object : HistoryAdapter.OnItemClickListener {
                         override fun onDeleteClicked(history: History, position: Int) {
-                            viewModel.deleteHistory(history.historyId)
+                            viewModel.deleteHistory(history.historyId, userName!!.getData().toString())
                             adapter.removeItem(position)
                         }
 

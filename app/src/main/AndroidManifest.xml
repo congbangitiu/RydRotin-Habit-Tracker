@@ -17,18 +17,29 @@
         <activity
             android:name=".ui.mood.MoodActivity"
             android:exported="false"
-            android:label="Mood"/>
+            android:label="Mood"
+            android:parentActivityName=".ui.home.HomeActivity"/>
         <activity
             android:name=".ui.history.HistoryActivity"
             android:exported="false"
-            android:label="History"/>
+            android:label="History"
+            android:parentActivityName=".ui.home.HomeActivity"/>
+        <activity
+            android:name=".ui.login.Login"
+            android:exported="false"
+            android:theme="@style/Theme.RydRotin.NoActionBar"/>
+        <activity
+            android:name=".ui.login.Registration"
+            android:exported="false"
+            android:theme="@style/Theme.RydRotin.NoActionBar"/>
         <activity
             android:name=".ui.habits.HabitsActivity"
             android:exported="false"
-            android:label="Habits"/>
+            android:label="Habits"
+            android:parentActivityName=".ui.home.HomeActivity"/>
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

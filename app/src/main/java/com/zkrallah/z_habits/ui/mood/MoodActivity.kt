@@ -2,17 +2,19 @@ package com.zkrallah.z_habits.ui.mood
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Toast
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.zkrallah.z_habits.HabitsApp
 import com.zkrallah.z_habits.adapter.MoodAdapter
 import com.zkrallah.z_habits.databinding.ActivityMoodBinding
 import com.zkrallah.z_habits.local.entities.Mood
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 class MoodActivity : AppCompatActivity() {
 
@@ -23,6 +25,7 @@ class MoodActivity : AppCompatActivity() {
     private val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT)
     val date = formatter.format(calendar.time).toString()
     private var selected = -1
+    var userName: HabitsApp? = null
     private val map = mapOf(
         1 to "Very Bad",
         2 to "Bad",
@@ -37,13 +40,14 @@ class MoodActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[MoodViewModel::class.java]
+        userName = (applicationContext as HabitsApp)
 
         updateUI()
         getSelected()
 
         binding.btn.setOnClickListener {
             if (selected != -1) {
-                viewModel.checkTodayMood(date)
+                viewModel.checkTodayMood(date,userName!!.getData().toString())
                 viewModel.state.observe(this@MoodActivity, object : Observer<Boolean> {
                     override fun onChanged(value: Boolean) {
                         if (value) {
@@ -60,7 +64,7 @@ class MoodActivity : AppCompatActivity() {
                                 ).show()
                             } else {
                                 mood = Mood(
-                                    selected, binding.editMessage.text.toString(), date
+                                    userName!!.getData().toString(),selected, binding.editMessage.text.toString(), date
                                 )
                                 viewModel.insertMood(mood)
                                 adapter.addItem(mood)
@@ -116,7 +120,7 @@ class MoodActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        viewModel.getMoodHistory()
+        viewModel.getMoodHistory(userName!!.getData().toString())
         viewModel.moodHistory.observe(this) {
             it?.let {
                 adapter = MoodAdapter(it as MutableList<Mood>, this@MoodActivity)

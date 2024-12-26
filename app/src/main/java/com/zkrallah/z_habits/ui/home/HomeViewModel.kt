@@ -3,6 +3,7 @@ package com.zkrallah.z_habits.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.zkrallah.z_habits.HabitsApp
 import com.zkrallah.z_habits.local.HabitsDatabase
 import com.zkrallah.z_habits.local.entities.History
 import com.zkrallah.z_habits.local.entities.Mood
@@ -31,12 +32,12 @@ class HomeViewModel : ViewModel() {
     private val _allTimeState = MutableLiveData(false)
     val allTimeStatus = _allTimeState
 
-    fun getWeekHistory(list: Array<String?>){
+    fun getWeekHistory(list: Array<String?>, username: String){
         viewModelScope.launch (Dispatchers.IO){
             val result = mutableListOf<History>()
             val job = async {
                 for (day in list){
-                    val fetch = async { database.historyDAO().getAllTodayHistory(day!!) }
+                    val fetch = async { database.historyDAO().getAllTodayHistory(day!!, username) }
                     val response = fetch.await()
                     for (item in response!!) result.add(item)
                 }
@@ -52,12 +53,12 @@ class HomeViewModel : ViewModel() {
         _weekState.value = false
     }
 
-    fun getMonthHistory(list: Array<String?>){
+    fun getMonthHistory(list: Array<String?>, username: String){
         viewModelScope.launch (Dispatchers.IO){
             val result = mutableListOf<History>()
             val job = async {
                 for (day in list){
-                    val fetch = async { database.historyDAO().getAllTodayHistory(day!!) }
+                    val fetch = async { database.historyDAO().getAllTodayHistory(day!!, username) }
                     val response = fetch.await()
                     for (item in response!!) result.add(item)
                 }
@@ -73,12 +74,12 @@ class HomeViewModel : ViewModel() {
         _monthState.value = false
     }
 
-    fun getMonthMoodHistory(list: Array<String?>){
+    fun getMonthMoodHistory(list: Array<String?>, username: String){
         viewModelScope.launch (Dispatchers.IO){
             val result = mutableListOf<Mood>()
             val job = async {
                 for (day in list){
-                    val fetch = async { database.moodDAO().getTodayMood(day!!) }
+                    val fetch = async { database.moodDAO().getTodayMood(day!!, username) }
                     val response = fetch.await()
                     if (response != null) result.add(response)
                 }
@@ -94,9 +95,9 @@ class HomeViewModel : ViewModel() {
         _moodState.value = false
     }
 
-    fun getAllTimeHistory(){
+    fun getAllTimeHistory(username: String){
         viewModelScope.launch (Dispatchers.IO){
-            val job = async { database.historyDAO().getHistory() }
+            val job = async { database.historyDAO().getHistory(username) }
             _allTimeHistory.postValue(job.await())
             _allTimeState.postValue(true)
         }

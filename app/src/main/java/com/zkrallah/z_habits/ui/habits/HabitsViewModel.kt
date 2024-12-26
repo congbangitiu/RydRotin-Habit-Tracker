@@ -11,8 +11,10 @@ import com.zkrallah.z_habits.local.entities.History
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import android.content.Intent
+import androidx.lifecycle.SavedStateHandle
 
-class HabitsViewModel : ViewModel() {
+class HabitsViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
 
     private val database = HabitsDatabase.getInstance()
 
@@ -25,9 +27,9 @@ class HabitsViewModel : ViewModel() {
     private val _state = MutableLiveData(false)
     val state = _state
 
-    fun getHistory() {
+    fun getHistory(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _habits.postValue(database.habitsDAO().getHabits())
+            _habits.postValue(database.habitsDAO().getHabits(username))
         }
     }
 
@@ -49,9 +51,9 @@ class HabitsViewModel : ViewModel() {
         }
     }
 
-    fun checkTodayHistory(habitId: Long, date: String) {
+    fun checkTodayHistory(habitId: Long, date: String, username: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val job = async { database.historyDAO().getTodayHistory(date, habitId) }
+            val job = async { database.historyDAO().getTodayHistory(date, habitId, username) }
             _history.postValue(job.await())
             _state.postValue(true)
         }
@@ -61,21 +63,21 @@ class HabitsViewModel : ViewModel() {
         _history.value = null
     }
 
-    fun getHabitHistory(habitId: Long) {
+    fun getHabitHistory(habitId: Long, username: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _habitHistory.postValue(database.habitsDAO().getHabitWithHistoryById(habitId))
+            _habitHistory.postValue(database.habitsDAO().getHabitWithHistoryById(habitId, username))
         }
     }
 
-    fun deleteHistory(historyId: Long) {
+    fun deleteHistory(historyId: Long, username: String) {
         viewModelScope.launch (Dispatchers.IO){
-            database.historyDAO().deleteHistory(historyId)
+            database.historyDAO().deleteHistory(historyId, username)
         }
     }
 
-    fun deleteHabit(habitId: Long){
+    fun deleteHabit(habitId: Long, username: String){
         viewModelScope.launch (Dispatchers.IO){
-            database.habitsDAO().deleteHabit(habitId)
+            database.habitsDAO().deleteHabit(habitId, username)
         }
     }
 

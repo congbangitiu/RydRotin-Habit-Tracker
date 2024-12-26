@@ -13,9 +13,9 @@ interface MoodDAO {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateMood(mood: Mood?)
 
-    @Query("select * from mood_table WHERE date = :date")
-    fun getTodayMood(date: String): Mood?
+    @Query("select * from mood_table WHERE date = :date and username = :username")
+    fun getTodayMood(date: String, username: String): Mood?
 
-    @Query("select * from mood_table")
-    fun getMoodHistory(): List<Mood>
+    @Query("select * from mood_table WHERE username = :username")
+    fun getMoodHistory(username: String): List<Mood>
 }

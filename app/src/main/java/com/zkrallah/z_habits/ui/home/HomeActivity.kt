@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.zkrallah.z_habits.HabitsApp
 import com.zkrallah.z_habits.R
 import com.zkrallah.z_habits.databinding.ActivityHomeBinding
 import com.zkrallah.z_habits.ui.habits.HabitsActivity
@@ -27,12 +29,18 @@ class HomeActivity : AppCompatActivity() {
     private val calendar: Calendar = Calendar.getInstance()
     private val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT)
     private lateinit var viewModel: HomeViewModel
+    var userName: HabitsApp? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        userName = (applicationContext as HabitsApp)
+
+//        val nameToDisplay: String = intent.getStringExtra("name") ?: "User"
+        val nameDisplay: TextView = findViewById(R.id.textUsername)
+        nameDisplay.text = "Welcome, " + userName!!.getData() + "!"
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         binding.historyContainer.visibility = View.GONE
@@ -174,7 +182,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun updateWeeksGraph(prev: Array<String?>, prevInDays: Array<String?>) {
-        viewModel.getWeekHistory(prev)
+        viewModel.getWeekHistory(prev, userName!!.getData().toString())
         viewModel.weekState.observe(this@HomeActivity, object : Observer<Boolean> {
             override fun onChanged(value: Boolean) {
                 if (value) {
@@ -237,7 +245,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun updateMonthsGraph(prev: Array<String?>, prevInDays: Array<String?>) {
-        viewModel.getMonthHistory(prev)
+        viewModel.getMonthHistory(prev, userName!!.getData().toString())
         viewModel.monthState.observe(this@HomeActivity, object : Observer<Boolean> {
             override fun onChanged(value: Boolean) {
                 if (value) {
@@ -306,7 +314,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun updateMoodGraph(prev: Array<String?>, prevInDays: Array<String?>) {
-        viewModel.getMonthMoodHistory(prev)
+        viewModel.getMonthMoodHistory(prev, userName!!.getData().toString())
         viewModel.moodState.observe(this, object : Observer<Boolean> {
             override fun onChanged(value: Boolean) {
                 if (value) {
@@ -368,7 +376,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun updateAllTimeHistoryGraph() {
-        viewModel.getAllTimeHistory()
+        viewModel.getAllTimeHistory(userName!!.getData().toString())
         viewModel.allTimeStatus.observe(this@HomeActivity, object : Observer<Boolean>{
             override fun onChanged(value: Boolean) {
                 if (value){

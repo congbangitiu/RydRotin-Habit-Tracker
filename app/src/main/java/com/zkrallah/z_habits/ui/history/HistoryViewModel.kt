@@ -23,22 +23,22 @@ class HistoryViewModel : ViewModel() {
     private val _state = MutableLiveData(false)
     val state = _state
 
-    fun getHistory() {
+    fun getHistory(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _history.postValue(database.historyDAO().getHistory())
+            _history.postValue(database.historyDAO().getHistory(username))
         }
     }
 
-    fun deleteHistory(historyId: Long) {
+    fun deleteHistory(historyId: Long, username: String) {
         viewModelScope.launch (Dispatchers.IO){
-            database.historyDAO().deleteHistory(historyId)
+            database.historyDAO().deleteHistory(historyId, username)
         }
     }
 
-    fun getTodayDetails(date: String){
+    fun getTodayDetails(date: String, username: String){
         viewModelScope.launch (Dispatchers.IO){
-            val historyJob = async{ database.historyDAO().getAllTodayHistory(date) }
-            val moodJob = async { database.moodDAO().getTodayMood(date) }
+            val historyJob = async{ database.historyDAO().getAllTodayHistory(date, username) }
+            val moodJob = async { database.moodDAO().getTodayMood(date, username) }
             _dayHistory.postValue(historyJob.await())
             _moodStatus.postValue(moodJob.await())
             _state.postValue(true)

@@ -1,10 +1,13 @@
 package com.zkrallah.z_habits.local.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "habits_table")
 data class Habits(
+    @ColumnInfo(defaultValue = "user")
+    var username: String,
     var name: String,
     var countPerDay: Int
 ) {

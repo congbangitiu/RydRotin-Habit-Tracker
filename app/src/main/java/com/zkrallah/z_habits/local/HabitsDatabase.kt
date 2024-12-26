@@ -12,9 +12,9 @@ import com.zkrallah.z_habits.local.entities.History
 import com.zkrallah.z_habits.local.entities.Mood
 
 @Database(entities = [Habits::class, History::class, Mood::class],
-    version = 4,
+    version = 5,
     exportSchema = true,
-    autoMigrations = [AutoMigration(from = 3,to = 4)])
+    autoMigrations = [AutoMigration(from = 4,to = 5)])
 abstract class HabitsDatabase : RoomDatabase(){
     abstract fun habitsDAO(): HabitsDAO
     abstract fun historyDAO(): HistoryDAO
@@ -37,7 +37,10 @@ abstract class HabitsDatabase : RoomDatabase(){
         }
         private val migration2To3 = object : Migration(2, 3){
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("CREATE TABLE IF NOT EXISTS mood_table ('value' INTEGER NOT NULL,'message' TEXT NOT NULL, 'date' TEXT NOT NULL, 'moodId' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)")
+                database.execSQL("CREATE TABLE IF NOT EXISTS mood_table ('username' TEXT NOT NULL, 'value' INTEGER NOT NULL,'message' TEXT NOT NULL, 'date' TEXT NOT NULL,'userName' TEXT NOT NULL, 'moodId' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)")
+                database.execSQL("ALTER TABLE habits_table ADD COLUMN username TEXT NOT NULL DEFAULT 'user'")
+                database.execSQL("ALTER TABLE history_table ADD COLUMN username TEXT NOT NULL DEFAULT 'user'")
+                database.execSQL("ALTER TABLE mood_table ADD COLUMN username TEXT NOT NULL DEFAULT 'user'")
             }
         }
     }
