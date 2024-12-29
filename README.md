@@ -1,11 +1,11 @@
 <div id="top" align="center">
 
-<img src="./images/Banner.png" alt="Banner">
+<img src="./images/Banner.png" width="100%" alt="Banner">
 
 </div>
 <!-- PROJECT LOGO -->
 <div align="center">
-<h1 align="center">RydRotin</h1>
+  <h1 align="center">RydRotin</h1>
   <img src="./images/Logo.png" alt="Logo">
   <h3 align="center">
     Habit Tracker Application<br /><br /> Mobile Application Development <br />International University - VNU
