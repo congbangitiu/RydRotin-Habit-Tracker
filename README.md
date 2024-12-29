@@ -6,7 +6,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
   <h1 align="center">RydRotin</h1>
-  <img src="./images/Logo.png" alt="Logo">
+  <img src="./images/Logo.png" alt="Logo" width="200">
   <h3 align="center">
     Habit Tracker Application<br /><br /> Mobile Application Development <br />International University - VNU
     <br />
