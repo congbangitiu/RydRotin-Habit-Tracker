@@ -22,37 +22,6 @@
 
 </div>
 
-<!-- Table contents -->
-
-# Table of Contents
-
-- [📚 About](#about)
-  - [👥 The Team Behind It](#1-the-team-behind-it)
-  - [📈 The Project We Are Working On](#2-the-project-we-are-working-on)
-  - [🎯 Goal](#3-goal)
-- [🚀 Reason](#reason)
-  - [💡 Motivation](#1-motivation)
-  - [💭 Idea](#2-idea)
-  - [🛤 Roadmap](#3-roadmap)
-- [🛠 Technologies Used](#technologies)
-- [🧩 Methodology](#methodology)
-  - [🔍 Feature Analysis](#1-feature-analysis)
-  - [🏗 MVVM Modern Architectural Pattern](#2-mvvm-modern-architectural-pattern)
-  - [🔗 Integrating MVVM Pattern in FurniScape](#3-integrating-mvvm-pattern-in-furniscape)
-- [📊 Diagrams](#diagrams)
-  - [🔄 Sequence Diagrams](#1-sequence-diagrams)
-  - [📐 Class Diagram](#2-class-diagram)
-  - [🔧 User Interaction Diagrams](#3-user-interaction-diagrams)
-  - [📜 Use Case Diagram](#4-use-case-diagram)
-- [🔧 Installation](#installation)
-- [📸 Demo - Result](#demo---result)
-  - [🔄 User Mode](#1-user)
-  - [📐 Admin Mode](#2-admin)
-- [🤝 Contributing](#contributing)
-- [📄 License](#license)
-- [📧 Contact](#contact)
-- [🙏 Acknowledgements](#acknowledgements)
-
 <!-- About -->
 
 # 📚 ABOUT
@@ -166,39 +135,39 @@ By providing a thorough and organized tracking system that makes habit monitorin
 
 ## 1. Splash Screen
 <p align="center">
-<img src="images/SplashScreen.png" width="200" alt="Splash Screen">
+<img src="images/SplashScreen.png" width="250" alt="Splash Screen">
 </p>
 
 ## 2. Login Screen
 <p align="center">
-<img src="images/LoginScreen.png" width="200" alt="Login Screen">
+<img src="images/LoginScreen.png" width="250" alt="Login Screen">
 </p>
 
 ## 3. Registration Screen
 <p align="center">
-<img src="images/RegistrationScreen.png" width="200" alt="Registration Screen">
+<img src="images/RegistrationScreen.png" width="250" alt="Registration Screen">
 </p>
 
 ## 4. Home Screen
 <p align="center">
-<img src="images/HomeScreen1.png" width="200" alt="Home Screen">
-<img src="images/HomeScreen3.png" width="200" alt="Home Screen">
+<img src="images/HomeScreen1.png" width="250" alt="Home Screen">
+<img src="images/HomeScreen3.png" width="250" alt="Home Screen">
 </p>
 
 ## 5. Habit Screen
 <p align="center">
-<img src="images/HabitScreen1.png" width="200" alt="Habit Screen">
-<img src="images/HabitScreen2.png" width="200" alt="Habit Screen">
+<img src="images/HabitScreen1.png" width="250" alt="Habit Screen">
+<img src="images/HabitScreen2.png" width="250" alt="Habit Screen">
 </p>
 
 ## 6. History Screen
 <p align="center">
-<img src="images/HistoryScreen.png" width="200" alt="History Screen">
+<img src="images/HistoryScreen.png" width="250" alt="History Screen">
 </p>
 
 ## 7. Mood Screen
 <p align="center">
-<img src="images/MoodScreen.png" width="200" alt="Mood Screen">
+<img src="images/MoodScreen.png" width="250" alt="Mood Screen">
 </p>
 
 **(and more screenshots hidden for you to explore yourself in our application...)**
