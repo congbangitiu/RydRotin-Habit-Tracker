@@ -1,12 +1,12 @@
-package com.zkrallah.z_habits
+package com.project.rydrotin
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.zkrallah.z_habits.databinding.ActivityMainBinding
-import com.zkrallah.z_habits.ui.login.Login
+import com.project.rydrotin.databinding.ActivityMainBinding
+import com.project.rydrotin.ui.login.Login
 
 class MainActivity : AppCompatActivity() {
 

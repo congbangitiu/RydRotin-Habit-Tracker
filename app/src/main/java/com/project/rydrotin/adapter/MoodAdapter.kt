@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits.adapter
+package com.project.rydrotin.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,10 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.zkrallah.z_habits.R
-import com.zkrallah.z_habits.local.entities.Mood
+import com.project.rydrotin.R
+import com.project.rydrotin.local.entities.Mood
 
-class MoodAdapter(private val list: MutableList<Mood>,private val context: Context) : RecyclerView.Adapter<MoodAdapter.ViewHolder>() {
+class MoodAdapter(private val list: MutableList<Mood>, private val context: Context) : RecyclerView.Adapter<MoodAdapter.ViewHolder>() {
 
     private val map = mapOf(
         1 to "Very Bad",

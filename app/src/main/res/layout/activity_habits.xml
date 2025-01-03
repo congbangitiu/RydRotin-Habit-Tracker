@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_yellow"
-    tools:context=".ui.habits.HabitsActivity">
+    tools:context="com.project.rydrotin.ui.habits.HabitsActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_habits"

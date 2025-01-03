@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits.adapter
+package com.project.rydrotin.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.zkrallah.z_habits.R
-import com.zkrallah.z_habits.local.entities.Habits
+import com.project.rydrotin.R
+import com.project.rydrotin.local.entities.Habits
 
 class HabitsAdapter(private val list: MutableList<Habits>) :
     RecyclerView.Adapter<HabitsAdapter.ViewHolder>() {

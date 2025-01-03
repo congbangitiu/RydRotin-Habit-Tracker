@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits.ui.history
+package com.project.rydrotin.ui.history
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -18,11 +18,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.zkrallah.z_habits.HabitsApp
-import com.zkrallah.z_habits.R
-import com.zkrallah.z_habits.adapter.HistoryAdapter
-import com.zkrallah.z_habits.databinding.ActivityHistoryBinding
-import com.zkrallah.z_habits.local.entities.History
+import com.project.rydrotin.HabitsApp
+import com.project.rydrotin.R
+import com.project.rydrotin.adapter.HistoryAdapter
+import com.project.rydrotin.databinding.ActivityHistoryBinding
+import com.project.rydrotin.local.entities.History
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.Calendar

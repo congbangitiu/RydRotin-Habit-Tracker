@@ -1,7 +1,7 @@
-package com.zkrallah.z_habits.local
+package com.project.rydrotin.local
 
 import androidx.room.*
-import com.zkrallah.z_habits.local.entities.History
+import com.project.rydrotin.local.entities.History
 
 @Dao
 interface HistoryDAO {

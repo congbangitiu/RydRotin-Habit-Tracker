@@ -1,18 +1,16 @@
-package com.zkrallah.z_habits.ui.mood
+package com.project.rydrotin.ui.mood
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.zkrallah.z_habits.HabitsApp
-import com.zkrallah.z_habits.adapter.MoodAdapter
-import com.zkrallah.z_habits.databinding.ActivityMoodBinding
-import com.zkrallah.z_habits.local.entities.Mood
+import com.project.rydrotin.HabitsApp
+import com.project.rydrotin.adapter.MoodAdapter
+import com.project.rydrotin.databinding.ActivityMoodBinding
+import com.project.rydrotin.local.entities.Mood
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale

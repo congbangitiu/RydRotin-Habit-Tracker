@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits.ui.login;
+package com.project.rydrotin.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zkrallah.z_habits.HabitsApp;
-import com.zkrallah.z_habits.R;
-import com.zkrallah.z_habits.ui.home.HomeActivity;
+import com.project.rydrotin.HabitsApp;
+import com.project.rydrotin.R;
+import com.project.rydrotin.ui.home.HomeActivity;
 
 public class Registration extends AppCompatActivity {
 
@@ -59,9 +59,8 @@ public class Registration extends AppCompatActivity {
                             Boolean insert = DB.insertData(user,name,pass);
                             if (insert) {
                                 Toast.makeText(Registration.this, "Registered successfully!!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), Login.class);
                                 userName.setName(name);
-//                                intent.putExtra("name", userName.getName());
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(Registration.this, "Registration failed!!", Toast.LENGTH_SHORT).show();

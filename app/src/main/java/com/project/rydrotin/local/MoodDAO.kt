@@ -1,8 +1,7 @@
-package com.zkrallah.z_habits.local
+package com.project.rydrotin.local
 
 import androidx.room.*
-import com.zkrallah.z_habits.local.entities.History
-import com.zkrallah.z_habits.local.entities.Mood
+import com.project.rydrotin.local.entities.Mood
 
 @Dao
 interface MoodDAO {

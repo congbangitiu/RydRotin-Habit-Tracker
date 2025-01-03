@@ -1,11 +1,11 @@
-package com.zkrallah.z_habits.ui.mood
+package com.project.rydrotin.ui.mood
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zkrallah.z_habits.local.HabitsDatabase
-import com.zkrallah.z_habits.local.entities.Mood
+import com.project.rydrotin.local.HabitsDatabase
+import com.project.rydrotin.local.entities.Mood
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

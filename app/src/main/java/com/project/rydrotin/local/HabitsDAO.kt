@@ -1,8 +1,8 @@
-package com.zkrallah.z_habits.local
+package com.project.rydrotin.local
 
 import androidx.room.*
-import com.zkrallah.z_habits.local.entities.HabitWithHistory
-import com.zkrallah.z_habits.local.entities.Habits
+import com.project.rydrotin.local.entities.HabitWithHistory
+import com.project.rydrotin.local.entities.Habits
 
 
 @Dao

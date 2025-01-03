@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits.ui.login;
+package com.project.rydrotin.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zkrallah.z_habits.HabitsApp;
-import com.zkrallah.z_habits.R;
-import com.zkrallah.z_habits.ui.home.HomeActivity;
+import com.project.rydrotin.HabitsApp;
+import com.project.rydrotin.R;
+import com.project.rydrotin.ui.home.HomeActivity;
 
 public class Login extends AppCompatActivity {
     EditText email, password;
@@ -44,16 +44,16 @@ public class Login extends AppCompatActivity {
                 String user = email.getText().toString();
                 String pass = password.getText().toString();
 
-                if(user.equals("")||pass.equals(""))
+                if(user.isEmpty() || pass.isEmpty())
                     Toast.makeText(Login.this, "Please enter all the fields!!", Toast.LENGTH_SHORT).show();
                 else if(!Patterns.EMAIL_ADDRESS.matcher(user).matches()) {
                     Toast.makeText(Login.this, "Please enter valid Email!!", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Boolean checkuserpass = DB.checkusernamepassword(user, pass);
+                    Boolean isValid = DB.checkValidateLogin(user, pass);
                     String name = DB.getUsername(user);
                     userName.setName(name);
-                    if(checkuserpass==true){
+                    if(isValid){
                         Toast.makeText(Login.this, "Sign in successfull!!", Toast.LENGTH_SHORT).show();
                         Intent intent  = new Intent(getApplicationContext(), HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

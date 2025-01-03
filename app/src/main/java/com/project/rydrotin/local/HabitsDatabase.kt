@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits.local
+package com.project.rydrotin.local
 
 import androidx.room.AutoMigration
 import androidx.room.Database
@@ -6,15 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.zkrallah.z_habits.HabitsApp.Companion.ctx
-import com.zkrallah.z_habits.local.entities.Habits
-import com.zkrallah.z_habits.local.entities.History
-import com.zkrallah.z_habits.local.entities.Mood
+import com.project.rydrotin.HabitsApp.Companion.ctx
+import com.project.rydrotin.local.entities.Habits
+import com.project.rydrotin.local.entities.History
+import com.project.rydrotin.local.entities.Mood
 
 @Database(entities = [Habits::class, History::class, Mood::class],
-    version = 5,
+    version = 4,
     exportSchema = true,
-    autoMigrations = [AutoMigration(from = 4,to = 5)])
+    autoMigrations = [AutoMigration(from = 3,to = 4)])
 abstract class HabitsDatabase : RoomDatabase(){
     abstract fun habitsDAO(): HabitsDAO
     abstract fun historyDAO(): HistoryDAO
@@ -27,7 +27,8 @@ abstract class HabitsDatabase : RoomDatabase(){
         @Synchronized
         fun getInstance(): HabitsDatabase {
             if (instance == null)
-                instance = Room.databaseBuilder(context.applicationContext, HabitsDatabase::class.java,
+                instance = Room.databaseBuilder(
+                    context.applicationContext, HabitsDatabase::class.java,
                     "habits_database")
                     .fallbackToDestructiveMigration()
                     .addMigrations(migration2To3)

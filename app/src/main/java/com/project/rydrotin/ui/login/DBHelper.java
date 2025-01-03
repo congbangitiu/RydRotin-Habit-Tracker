@@ -1,5 +1,6 @@
-package com.zkrallah.z_habits.ui.login;
+package com.project.rydrotin.ui.login;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -29,46 +30,37 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("username", username);
         contentValues.put("password", password);
         long result = MyDB.insert("users", null, contentValues);
-        if(result==-1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public String getUsername(String in_email) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         String username = null;
-        Cursor cursor = MyDB.rawQuery("SELECT username FROM users WHERE email = ?", new String[]{in_email});
+        @SuppressLint("Recycle") Cursor cursor = MyDB.rawQuery("SELECT username FROM users WHERE email = ?", new String[]{in_email});
         if (cursor.moveToFirst()) {
             // Get the username from the first row
-            username = cursor.getString(0); // 0 is the index of the username column
+            return cursor.getString(0); // 0 is the index of the username column
         }
-        return username;
+        return null;
     }
 
     public Boolean checkEmail(String email) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from users where email = ?", new String[]{email});
-        if (cursor.getCount() > 0)
-            return true;
-        else
-            return false;
+        @SuppressLint("Recycle") Cursor cursor = MyDB.rawQuery("Select * from users where email = ?", new String[]{email});
+        return cursor.getCount() > 0;
     }
 
     public Boolean checkUsername(String username) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from users where username = ?", new String[]{username});
-        if (cursor.getCount() > 0)
-            return true;
-        else
-            return false;
+        @SuppressLint("Recycle") Cursor cursor = MyDB.rawQuery("Select * from users where username = ?", new String[]{username});
+        return cursor.getCount() > 0;
     }
 
-    public Boolean checkusernamepassword(String email, String password){
+    public Boolean checkValidateLogin(String email, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from users where email = ? and password = ?", new String[] {email,password});
-        if(cursor.getCount()>0)
-            return true;
-        else
-            return false;
+        // Declare cursor outside try block
+        try (Cursor cursor = MyDB.rawQuery("Select * from users where email = ? and password = ?", new String[]{email, password})) {
+            return cursor.getCount() > 0;
+        }
     }
 }

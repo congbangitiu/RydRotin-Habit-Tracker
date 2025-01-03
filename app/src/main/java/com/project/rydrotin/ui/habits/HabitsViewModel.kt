@@ -1,17 +1,16 @@
-package com.zkrallah.z_habits.ui.habits
+package com.project.rydrotin.ui.habits
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zkrallah.z_habits.local.HabitsDatabase
-import com.zkrallah.z_habits.local.entities.HabitWithHistory
-import com.zkrallah.z_habits.local.entities.Habits
-import com.zkrallah.z_habits.local.entities.History
+import com.project.rydrotin.local.HabitsDatabase
+import com.project.rydrotin.local.entities.HabitWithHistory
+import com.project.rydrotin.local.entities.Habits
+import com.project.rydrotin.local.entities.History
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import android.content.Intent
 import androidx.lifecycle.SavedStateHandle
 
 class HabitsViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {

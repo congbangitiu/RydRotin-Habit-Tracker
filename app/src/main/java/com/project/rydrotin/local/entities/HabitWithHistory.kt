@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits.local.entities
+package com.project.rydrotin.local.entities
 
 import androidx.room.Embedded
 import androidx.room.Relation

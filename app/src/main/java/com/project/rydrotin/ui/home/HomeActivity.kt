@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits.ui.home
+package com.project.rydrotin.ui.home
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -14,12 +14,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
-import com.zkrallah.z_habits.HabitsApp
-import com.zkrallah.z_habits.R
-import com.zkrallah.z_habits.databinding.ActivityHomeBinding
-import com.zkrallah.z_habits.ui.habits.HabitsActivity
-import com.zkrallah.z_habits.ui.history.HistoryActivity
-import com.zkrallah.z_habits.ui.mood.MoodActivity
+import com.project.rydrotin.HabitsApp
+import com.project.rydrotin.R
+import com.project.rydrotin.databinding.ActivityHomeBinding
+import com.project.rydrotin.ui.habits.HabitsActivity
+import com.project.rydrotin.ui.history.HistoryActivity
+import com.project.rydrotin.ui.mood.MoodActivity
 import java.text.SimpleDateFormat
 import java.util.*
 

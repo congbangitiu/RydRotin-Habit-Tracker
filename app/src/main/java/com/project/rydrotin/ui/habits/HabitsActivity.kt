@@ -1,11 +1,10 @@
-package com.zkrallah.z_habits.ui.habits
+package com.project.rydrotin.ui.habits
 
 //import androidx.compose.ui.semantics.text
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -16,13 +15,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.zkrallah.z_habits.HabitsApp
-import com.zkrallah.z_habits.R
-import com.zkrallah.z_habits.adapter.HabitsAdapter
-import com.zkrallah.z_habits.adapter.HistoryAdapter
-import com.zkrallah.z_habits.databinding.ActivityHabitsBinding
-import com.zkrallah.z_habits.local.entities.Habits
-import com.zkrallah.z_habits.local.entities.History
+import com.project.rydrotin.HabitsApp
+import com.project.rydrotin.R
+import com.project.rydrotin.adapter.HabitsAdapter
+import com.project.rydrotin.adapter.HistoryAdapter
+import com.project.rydrotin.databinding.ActivityHabitsBinding
+import com.project.rydrotin.local.entities.Habits
+import com.project.rydrotin.local.entities.History
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
