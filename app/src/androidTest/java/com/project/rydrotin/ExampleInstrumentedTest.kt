@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits
+package com.project.rydrotin
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

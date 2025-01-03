@@ -1,4 +1,4 @@
-package com.zkrallah.z_habits
+package com.project.rydrotin
 
 import org.junit.Test
 
