@@ -1,110 +1,235 @@
-<h1 align = "center" > Habit Tracker App : <h1/>
-<br>
+<div id="top" align="center">
 
-Habits Tracking App with Kotlin, Room Database, Kotlin Coroutines, MVVM Architecture, LiveData and MPAndroid Chart.
- 
+<img src="./images/Banner.png" width="100%" alt="Banner">
 
-<h2> App Features : <h2/>
+</div>
+<!-- PROJECT LOGO -->
+<div align="center">
+  <h1 align="center">RydRotin</h1>
+  <img src="./images/Logo.png" alt="Logo" width="200">
+  <h3 align="center">
+    Habit Tracker Application<br /><br /> Mobile Application Development <br />International University - VNU
+    <br />
+    <br />
+    <a href="https://github.com/congbangitiu/RydRotin-Habit-Tracker">Report Bug</a>
+    ·
+    <a href="https://github.com/congbangitiu/RydRotin-Habit-Tracker">Request Feature</a>
+  </h3>
 
-1- Insert Habits you want to track on a regular basis. <br> <br>
-2- Enter each habit name and count per day. <br> <br>
-3- Start tracking your habits. <br> <br>
-4- The app makes a graph with your Last week/month progress which is calculated from your history, the count done divided by the count per day for each habit history in each day. <br> <br>
-5- If you want more than the last week/month history, You can Insert any starting date and it will generate the graph for you starting from this day. <br> <br>
-6- You can delete any habit or any habit history. <br> <br>
-7- You can see all your history of past days. <br> <br>
-8- Get the history of the only selected habit by one-to-many relationship. <br> <br>
-9- Track your current streak of the Habit. <br> <br>
-10- Edit the count per day for any Habit anytime. <br> <br>
-11- Track your Mood status over the days and leave a message at the end of each day. <br> <br>
-12- Search any day and it will show your habits that day with the progress percentage and Mood status with the message of that day.
- 
- <h1 align = "center" > Don't forget to star the repo if you find it useful :D  <h1/>
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Issues][issues-shield]][issues-url]
 
-<br> <hr>
-The Welcome screen :
-<table align="center">
-  <tr>
-    <td> 
-      <img src ="https://user-images.githubusercontent.com/54005330/235318870-2bc7619b-be9e-4ae5-b21b-5a772bbf5eb1.PNG"/>
-    </td>
-  </tr>
-</table>
+</div>
 
-Home screen with Analytics :
-<table align="center">
-  <tr>
-    <td> 
-      <img src ="https://github.com/muhammadzkralla/Z-Habits/assets/54005330/11040e91-0ffd-459f-be51-1ff79a76432a"/>
-    </td>
-  </tr>
-</table>
+<!-- About -->
 
-The Habits screen :
-<table align="center">
-  <tr>
-    <td>
-      <img src ="https://github.com/muhammadzkralla/Z-Habits/assets/54005330/962a0e24-a792-4286-8077-592ec06d7201"/>
-    </td>
-  </tr>
-</table>
+# 📚 ABOUT
 
-Selected Habit history with current streak :
-<table align="center">
-  <tr>
-    <td> 
-      <img src ="https://github.com/muhammadzkralla/Z-Habits/assets/54005330/cd641f37-9b54-4329-b2f1-1d48522a2ffa"/>
-    </td>
-  </tr>
-</table>
+## 1. The team behind it
 
-Edit the habit count anytime :
-<table align="center">
-  <tr>
-    <td> 
-      <img src ="https://github.com/muhammadzkralla/Z-Habits/assets/54005330/7706c024-9b54-43a7-80b1-c26153622a25"/>
-    </td>
-  </tr>
-</table>
+| No. |       Full Name       | Student's ID |              Email               |                 Github account                  |                 Roles                  | Contribution |
+| :-: | :-------------------: | :----------: | :------------------------------: | :---------------------------------------------: | :------------------------------------: | :----------: |
+|  1  |     Nguyen Luan Cong Bang      | ITITIU20163  | ITITIU20163@student.hcmiu.edu.vn |     [congbangitiu](https://github.com/congbangitiu)     | Project Manager  |     16.67%      |
+|  2  |     Pham Gia Bao      | ITITIU20166  | ITCSIU20166@student.hcmiu.edu.vn |    [giabao18](https://github.com/giabao18)    |           Back-end Developer           |     16.67%      |
+|  3  | Pham Minh Vu | ITITIU20354  | ITITIU20354@student.hcmiu.edu.vn | [PMinhVu](https://github.com/PMinhVu) |          Front-end Developer           |     16.67%      |
+|  4  |     Truong Duc Duy Khang      | ITITIU20227  | ITITIU20227@student.hcmiu.edu.vn |      [ITITIU20227](https://github.com/ITITIU20227)      |          UI/UX Designer           |     16.67%      |
+|  5  |     Bui Nhat Quang Truong      | ITITIU20333  | ITITIU20333@student.hcmiu.edu.vn |      [TrgDz](https://github.com/TrgDz)      |          Back-end Developer           |     16.67%      |
+|  6  |     Nguyen Huy Hung      | ITCSIU21064  | ITCSIU21064@student.hcmiu.edu.vn |      [HungTouya](https://github.com/HungTouya)      |          Back-end Developer           |     16.67%      |
 
-All History screen with search day feature :
-<table align="center">
-  <tr>
-    <td> 
-      <img src ="https://github.com/muhammadzkralla/Z-Habits/assets/54005330/e5c3b3ec-370f-4335-8bce-e3a40e2df4f3"/>
-    </td>
-  </tr>
-</table>
+## 2. The project we are working on
 
-Search a day showing progress, habits and mood that day :
-<table align="center">
-  <tr>
-    <td> 
-      <img src ="https://github.com/muhammadzkralla/Z-Habits/assets/54005330/fd854467-8a07-4040-ba40-a081116889c1"/>
-    </td>
-  </tr>
-</table>
+**RydRotin** is a mobile app designed to help users establish and sustain daily routines through habit tracking and emotional state monitoring. The app offers features like creating, modifying, and tracking habits, managing habit history, and maintaining streaks. With visually appealing charts, it provides clear progress insights, fostering motivation and self-reflection. Developed with a systematic approach, **RydRotin** ensures functionality and user-friendliness, catering to both beginners and experienced users. By combining habit management with progress visualization, the app encourages consistency, boosts productivity, and supports personal growth.
 
-Track your Mood over the days and leave a message at the end of the day :
-<table align="center">
-  <tr>
-    <td> 
-      <img src ="https://github.com/muhammadzkralla/Z-Habits/assets/54005330/89ea6938-f931-4fff-8cbb-782d79f47702"/>
-    </td>
-  </tr>
-</table>
+## 3. Objectives
 
-Analytics can be customized, initially it shows current week/month history but you can select the starting day from the calendar icon
-and it will automatically analyze your data then :
-<table align="center">
-  <tr>
-    <td> 
-      <img src ="https://github.com/muhammadzkralla/Z-Habits/assets/54005330/4bae8dd8-8d3b-4a09-97bf-c6fe570e0b58"/>
-    </td>
-   <td> 
-      <img src ="https://github.com/muhammadzkralla/Z-Habits/assets/54005330/65337403-1581-4751-81a9-39d2c5123a53"/>
-    </td>
-  </tr>
-</table>
+By providing a thorough and organized tracking system that makes habit monitoring easier, this initiative aims to assist users in maintaining healthy behaviors. In order to help users better comprehend their path, the program seeks to provide tools that monitor progress successfully via simple and understandable graphics. The app's integration of mood monitoring gives users the ability to assess how their behaviors affect their mental health and offers insightful information about their general well-being. The program promotes long-term habit maintenance and helps users lead healthier and more productive lives. It is a simple but powerful platform.
 
-Feel free to contribute, offer improvements or leave any comments, I'll be all ears :D
+
+<!-- Technologies Used -->
+
+# 🛠 TECHNOLOGY
+
+- **Frontend:** XML 
+
+- **Backend:** Kotlin, Java
+
+- **Database:** Room
+
+- **Version Control:** Github
+
+- **Ide:** Android Studio
+
+<!-- Diagrams -->
+
+# 📊 DIAGRAM
+
+## 1. User flow Diagram
+<div align="center">
+<img src="images/UserFlow.png" alt="">
+</div>
+
+## 2. Use Case Diagram
+<div align="center">
+<img src="images/UseCase.png" alt="">
+</div>
+
+## 3. Entity-Relationship Diagram (ERD)
+<div align="center">
+<img src="images/ERD.png" alt="">
+</div>
+
+## 4. Class Diagram
+<div align="center">
+<img src="images/Class.png" alt="">
+</div>
+
+## 5. MVVM model
+<div align="center">
+<img src="images/MVVM.png" alt="">
+</div>
+
+## 6. Sequence Diagrams
+
+**6.1. Log in** 
+<div align="center">
+<img src="images/Login.png" alt="">
+</div>
+
+**6.2. Register** 
+<div align="center">
+<img src="images/Registration.png" alt="">
+</div>
+
+**6.3. Add a habit** 
+<div align="center">
+<img src="images/AddHabit.png" alt="">
+</div>
+
+**6.4. View the history of a specific habit** 
+<div align="center">
+<img src="images/History.png" alt="">
+</div>
+
+**6.5. Generate a progress graph from a selected date** 
+<div align="center">
+<img src="images/Graph.png" alt="">
+</div>
+
+<!-- INSTALLATION -->
+
+# 🔧 INSTALLATION
+
+### Steps:
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/congbangitiu/RydRotin-Habit-Tracker.git
+   ```
+2. Open in Android Studio
+3. Wait for building Gradle files
+4. Run the app on your device or emulator
+
+
+# 📸 DEMO - RESULT
+
+## 1. Splash Screen
+<p align="center">
+<img src="images/SplashScreen.png" width="250" alt="Splash Screen">
+</p>
+
+## 2. Login Screen
+<p align="center">
+<img src="images/LoginScreen.png" width="250" alt="Login Screen">
+</p>
+
+## 3. Registration Screen
+<p align="center">
+<img src="images/RegistrationScreen.png" width="250" alt="Registration Screen">
+</p>
+
+## 4. Home Screen
+<p align="center">
+<img src="images/HomeScreen1.png" width="250" alt="Home Screen">
+<img src="images/HomeScreen3.png" width="250" alt="Home Screen">
+</p>
+
+## 5. Habit Screen
+<p align="center">
+<img src="images/HabitScreen1.png" width="250" alt="Habit Screen">
+<img src="images/HabitScreen2.png" width="250" alt="Habit Screen">
+</p>
+
+## 6. History Screen
+<p align="center">
+<img src="images/HistoryScreen.png" width="250" alt="History Screen">
+</p>
+
+## 7. Mood Screen
+<p align="center">
+<img src="images/MoodScreen.png" width="250" alt="Mood Screen">
+</p>
+
+**(and more screenshots hidden for you to explore yourself in our application...)**
+
+<!-- CONTRIBUTING -->
+
+# 🤝 CONTRIBUTING
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any
+contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also
+simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+# 📄 LICENSE
+
+This project is licensed under MIT License. See the [License](https://github.com/congbangitiu/RydRotin-Habit-Tracker/blob/main/LICENSE) file for details.
+
+<!-- CONTACT-->
+
+# 📧 CONTACT
+
+For any inquiries of feedback, please contact:
+
+- Nguyen Luan Cong Bang by **[Email HERE](mailto:ITITIU20163@student.hcmiu.edu.vn)**
+
+- Project Link: [https://github.com/congbangitiu/RydRotin-Habit-Tracker](https://github.com/congbangitiu/RydRotin-Habit-Tracker)
+
+You can also reach out to other team members:
+- **[Pham Gia Bao](mailto:ITITIU20166@student.hcmiu.edu.vn)**
+- **[Pham Minh Vu](mailto:ITITIU20354@student.hcmiu.edu.vn)**
+- **[Truong Duc Duy Khang](mailto:ITITIU20227@student.hcmiu.edu.vn)**
+- **[Bui Nhat Quang Truong](mailto:ITITIU20333@student.hcmiu.edu.vn)**
+- **[Nguyen Huy Hung](mailto:ITCSIU21064@student.hcmiu.edu.vn)**
+
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+
+# 🙏 ACKNOWLEDGEMENTS
+
+We want to express our sincerest thanks to our lecturer and the people who have helped us to achieve this project's
+goals:
+
+- []() Dr. Le Duy Tan
+- []() The README.md template from **[othneildrew](https://github.com/othneildrew/Best-README-Template)**
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/congbangitiu/RydRotin-Habit-Tracker.svg?style=for-the-badge
+[contributors-url]: https://github.com/congbangitiu/RydRotin-Habit-Tracker/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/congbangitiu/RydRotin-Habit-Tracker.svg?style=for-the-badge
+[forks-url]: https://github.com/congbangitiu/RydRotin-Habit-Tracker/network/members
+[issues-shield]: https://img.shields.io/github/issues/congbangitiu/RydRotin-Habit-Tracker.svg?style=for-the-badge
+[issues-url]: https://github.com/congbangitiu/RydRotin-Habit-Tracker/issues
+
+

@@ -5,12 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_yellow"
-    tools:context=".MainActivity">
+    tools:context="com.project.rydrotin.MainActivity">
+
+    <LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+        xmlns:app = "http://schemas.android.com/apk/res-auto"
+        xmlns:tools = "http://schemas.android.com/tools"
+        android:layout_width = "match_parent"
+        android:gravity = "center"
+        android:layout_height = "match_parent"
+        tools:context = "com.project.rydrotin.MainActivity">
+        <TextView
+            android:id = "@+id/text"
+            android:textSize = "30sp"
+            android:layout_width = "match_parent"
+            android:layout_height = "match_parent" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
         android:src="@drawable/rydrotin_logo"
         app:layout_constraintBottom_toTopOf="@id/tv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +51,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:text="Start Today, Perfect Tomorrow"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="@color/medium_yellow"
         android:textFontWeight="500"
         app:fontFamily="sans-serif-light"

@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mood.MoodActivity">
+        tools:context="com.project.rydrotin.ui.mood.MoodActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/add_mood"

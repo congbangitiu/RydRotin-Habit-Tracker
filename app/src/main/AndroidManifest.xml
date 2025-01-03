@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.zkrallah.z_habits">
+    package="com.project.rydrotin">
 
     <application
-        android:name=".HabitsApp"
+        android:name="com.project.rydrotin.HabitsApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,22 +15,33 @@
         android:theme="@style/Theme.RydRotin"
         tools:targetApi="31">
         <activity
-            android:name=".ui.mood.MoodActivity"
+            android:name="com.project.rydrotin.ui.mood.MoodActivity"
             android:exported="false"
-            android:label="Mood"/>
+            android:label="Mood"
+            android:parentActivityName="com.project.rydrotin.ui.home.HomeActivity"/>
         <activity
-            android:name=".ui.history.HistoryActivity"
+            android:name="com.project.rydrotin.ui.history.HistoryActivity"
             android:exported="false"
-            android:label="History"/>
+            android:label="History"
+            android:parentActivityName="com.project.rydrotin.ui.home.HomeActivity"/>
         <activity
-            android:name=".ui.habits.HabitsActivity"
+            android:name=".ui.login.Login"
             android:exported="false"
-            android:label="Habits"/>
+            android:theme="@style/Theme.RydRotin.NoActionBar"/>
         <activity
-            android:name=".ui.home.HomeActivity"
-            android:exported="false" />
+            android:name=".ui.login.Registration"
+            android:exported="false"
+            android:theme="@style/Theme.RydRotin.NoActionBar"/>
         <activity
-            android:name=".MainActivity"
+            android:name="com.project.rydrotin.ui.habits.HabitsActivity"
+            android:exported="false"
+            android:label="Habits"
+            android:parentActivityName="com.project.rydrotin.ui.home.HomeActivity"/>
+        <activity
+            android:name="com.project.rydrotin.ui.home.HomeActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.project.rydrotin.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.RydRotin.NoActionBar">
             <intent-filter>
